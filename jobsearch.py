@@ -26,7 +26,16 @@ def indeedJobs():
         link = jobdiv.find('a')['href']
         writer.writerow([title, "https://www.indeed.co.uk/" + link])
 
+def reedJobs():
+    website = requests.get("https://www.reed.co.uk/jobs/junior-developer-jobs-in-nr316au?datecreatedoffset=LastThreeDays&proximity=30").text
+    soup = BeautifulSoup(website, 'lxml')
+    for jobs in soup.find_all('article', class_='job-result'):
+        title = jobs.h3.text
+        link = jobs.find('a')['href']
+        writer.writerow([title, 'https://www.reed.co.uk/' + link])
+
 totalJobs()
 indeedJobs()
+reedJobs()
 
 file.close()
