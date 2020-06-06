@@ -11,7 +11,7 @@ writer.writerow(['Job Title', 'Job Link'])
 
 # Define the functions for each job website
 def totalJobs():
-    website = requests.get("https://www.totaljobs.com/jobs/junior-developer/in-nr31-6au?radius=30&postedwithin=3").text
+    website = requests.get("https://www.totaljobs.com/jobs/junior-developer/in-nr31-0lt?radius=30&postedwithin=3").text
     soup = BeautifulSoup(website, 'lxml')
     for jobdiv in soup.find_all('div', class_='job-title'):
         title = jobdiv.h2.text
@@ -27,7 +27,7 @@ def indeedJobs():
         writer.writerow([title, "https://www.indeed.co.uk/" + link])
 
 def reedJobs():
-    website = requests.get("https://www.reed.co.uk/jobs/junior-developer-jobs-in-nr316au?datecreatedoffset=LastThreeDays&proximity=30").text
+    website = requests.get("https://www.reed.co.uk/jobs/junior-developer-jobs-in-nr310lt?datecreatedoffset=LastThreeDays&proximity=30").text
     soup = BeautifulSoup(website, 'lxml')
     for jobs in soup.find_all('article', class_='job-result'):
         title = jobs.h3.text
